@@ -9,16 +9,16 @@ const IMAGES = [
   "https://icongr.am/devicon/javascript-original.svg?size=64&color=currentColor",
   "https://icongr.am/devicon/python-original.svg?size=64&color=currentColor",
   "https://icongr.am/devicon/nodejs-original.svg?size=64&color=currentColor",
-  "https://icongr.am/devicon/docker-original.svg?size=64&color=currentColor",
-  "https://icongr.am/devicon/java-original.svg?size=64&color=currentColor",
-  "https://icongr.am/devicon/csharp-original.svg?size=64&color=currentColor",
   "https://icongr.am/devicon/chrome-original.svg?size=64&color=currentColor",
   "https://icongr.am/devicon/css3-original.svg?size=64&color=currentColor",
-  "https://icongr.am/devicon/postgresql-original-wordmark.svg?size=64&color=currentColor",
-  "https://icongr.am/devicon/html5-original.svg?size=64&color=currentColor",
   "https://icongr.am/devicon/drupal-original.svg?size=64&color=currentColor",
-  "https://icongr.am/devicon/amazonwebservices-original.svg?size=64&color=currentColor",
+  // "https://icongr.am/devicon/docker-original.svg?size=64&color=currentColor",
+  // "https://icongr.am/devicon/java-original.svg?size=64&color=currentColor",
+  // "https://icongr.am/devicon/csharp-original.svg?size=64&color=currentColor",
+  // "https://icongr.am/devicon/postgresql-original-wordmark.svg?size=64&color=currentColor",
+  // "https://icongr.am/devicon/html5-original.svg?size=64&color=currentColor",
   // "https://icongr.am/devicon/ie10-original.svg?size=64&color=currentColor",
+  // "https://icongr.am/devicon/amazonwebservices-original.svg?size=64&color=currentColor",
   // "https://icongr.am/devicon/express-original.svg?size=64&color=currentColor",
   // "https://icongr.am/devicon/android-original.svg?size=64&color=currentColor",
   // "https://icongr.am/devicon/c-original.svg?size=64&color=currentColor",
@@ -49,34 +49,36 @@ export default function Memotest() {
 
   return (
     <>
-      <section style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center"}}>
+      <section style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
         <h1>Memo Test Game:</h1>
         <Link to="/">
           <button style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Go to Home</button>
         </Link>
       </section><br />
 
-      <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(90px, 1fr))", gap: "10px", }}>
-        {
-          IMAGES?.map((image) => {
-            const [, url] = image.split("|");
-            return (
-              <li
-                key={image}
-                onClick={() => selected.length < 2 && setSelected((selected) => selected.concat(image))}
-                style={{ cursor: "pointer", padding: 12, border: "2px solid #666", borderRadius: 12 }}
-              >
-                {selected.includes(image) || guessed.includes(image) ? (
-                  <img src={url} alt="tech-icon" />
-                ) : (
-                  <img src={"https://icongr.am/clarity/bolt.svg?size=64&color=currentColor"} alt="tech-icon" />
-                )
-                }
-              </li>
-            )
-          })
-        }
-      </ul>
+      <div style={{ minWidth: "50vw" }}>
+        <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(90px, 1fr))", gap: "8px", }}>
+          {
+            IMAGES?.map((image) => {
+              const [, url] = image.split("|");
+              return (
+                <li
+                  key={image}
+                  onClick={() => selected.length < 2 && setSelected((selected) => selected.concat(image))}
+                  style={{ cursor: "pointer", padding: 12, border: "2px solid #666", borderRadius: 12 }}
+                >
+                  {selected.includes(image) || guessed.includes(image) ? (
+                    <img src={url} alt="tech-icon" />
+                  ) : (
+                    <img src={"https://icongr.am/clarity/bolt.svg?size=64&color=currentColor"} alt="tech-icon" />
+                  )
+                  }
+                </li>
+              )
+            })
+          }
+        </ul>
+      </div>
     </>
   )
 }
