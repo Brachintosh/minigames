@@ -59,31 +59,34 @@ export default function Pokemon() {
 
   return (
     <>
-      <section style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-        <h1>Poke Guess Game:</h1>
+      <section style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", height: "20vh" }}>
+        <h1 className="nes-text" style={{ textShadow: "3.5px 2px 4px white" }}>Poke Guess Game:</h1>
         <Link to="/">
-          <button style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Go to Home</button>
+          <button type="button" className="nes-btn is-primary" style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Go to Home</button>
         </Link>
       </section><br />
 
       <div style={{
-        border: "solid red 2px", padding: "auto",
-        display: "flex", flexDirection: "column", alignItems: "center", marginTop: "2em",
+        border: "solid red 2px", margin: "auto", width: "60vw",
+        display: "flex", flexDirection: "column", alignItems: "center", alignSelf:"center", marginTop: "2em",
         backgroundImage: `url(${backgroundIMG})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover",
       }} >
-          <img
-            height={264} width={264}
-            style={{ imageRendering: "pixelated", filter: hasWon ? "" : "brightness(0) invert(1)", }}
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${MATCH + 1}.png`}
-          />
-          {
-            hasWon ? (<button style={{ fontSize: "28px", marginTop: "1em", padding: ".5em 1em" }} onClick={() => location.reload()} >PLAY AGAIN</button>)
-              : (
-                <form onSubmit={handleSubmit}>
-                  <input style={{ fontSize: "28px", marginTop: "1em" }} type="text" autoFocus name="pokemon" />
-                  <button style={{ fontSize: "28px", marginLeft: "18px" }}>Submit</button>
-                </form>)
-          }
+        <img
+          height={264} width={264}
+          style={{ imageRendering: "pixelated", filter: hasWon ? "" : "brightness(0) invert(1)", }}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${MATCH + 1}.png`}
+        />
+        {
+          hasWon ? (<button type="button" className="nes-btn is-success" style={{ fontSize: "28px", marginTop: "1em", padding: ".5em 1em" }} onClick={() => location.reload()} >PLAY AGAIN</button>)
+            : (
+
+              <form onSubmit={handleSubmit}>
+                <div className="nes-field">
+                  <input type="text" id="name_field" className="nes-input" name="pokemon" />
+                  <button type="button" className="nes-btn is-warning">Submit</button>
+                </div>
+              </form>)
+        }
       </div>
     </>
   )

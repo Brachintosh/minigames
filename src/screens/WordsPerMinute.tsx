@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react"
 
+const wpmBgIMG = "https://t4.ftcdn.net/jpg/05/02/35/47/360_F_502354716_V1aI7pDCSJ6I82oqOSWUOzcH2tAfZ3AC.jpg";
+
 const WORDS = [
   "gannicus", "oblivion", "griffindor", "mordor", "asterix", "plasmatic", "abnormal",
   "abdomen", "asterisco", "grisaceo", "cristalino", "inframundo", "sepultura", "gladiators",
@@ -37,21 +39,26 @@ export default function WordsPerMinute() {
   }, [time]);
 
   return (
-    <>
-      <section style={{ display: "flex", justifyContent: "space-evenly", alignSelf: 'flex-start' }}>
-        <h1>WordsPerMinute Game:</h1>
+    <div
+    style={{
+      height: "100vh",
+      backgroundImage: `url(${wpmBgIMG})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%",
+    }}
+    >
+       <section style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", height: "20vh" }}>
+        <h1 className="nes-text" style={{ textShadow: "3.5px 2px 4px white" }}>WordsPerMinute Game:</h1>
         <Link to="/">
-          <button style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Go to Home</button>
+          <button type="button" className="nes-btn is-primary" style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Go to Home</button>
         </Link>
       </section>
 
       <br /><br />
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 24, textAlign: "center" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 32, textAlign: "center" }}>
         <section>
-          {Boolean(time) && <h1 style={{ fontSize: "42px" }}>{word}</h1>}
-          <h3>Characters well typed: {characterCount}</h3>
-          <h3>Time remaining: {time}</h3>
+          {Boolean(time) && <h1 className="nes-text" style={{ fontSize: "52px", color: "aliceblue", textShadow: "3.5px 2px 4px tomato" }}>{word}</h1>}
+          <h3 className="nes-btn is-success">Characters well typed: {characterCount}</h3>
+          <h3 className="nes-btn is-error">Time remaining: {time}</h3>
         </section>
         {time ? (
           <form onSubmit={handleSubmit}>
@@ -65,10 +72,10 @@ export default function WordsPerMinute() {
             <button style={{ fontSize: "28px", marginLeft: "20px" }} type="submit" >Submit</button>
           </form>
         ) : (
-          <button style={{ fontSize: "28px" }} onClick={startGame}>Play</button>
+          <button type="button" className="nes-btn is-warning" style={{ fontSize: "28px" }} onClick={startGame}>Play</button>
         )}
 
       </div>
-    </>
+    </div>
   )
 }

@@ -49,14 +49,15 @@ export default function Memotest() {
 
   return (
     <>
-      <section style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-        <h1>Memo Test Game:</h1>
+      <section style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", height: "20vh" }}>
+      <h1 className="nes-text" style={{ textShadow: "3.5px 2px 4px white" }}>Memo Test Game:</h1>
         <Link to="/">
-          <button style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Go to Home</button>
+          <button type="button" className="nes-btn is-primary" style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Go to Home</button>
         </Link>
       </section><br />
 
-      <div style={{ minWidth: "50vw" }}>
+
+      <div>
         <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(90px, 1fr))", gap: "8px", }}>
           {
             IMAGES?.map((image) => {

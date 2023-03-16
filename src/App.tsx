@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import LandingPage from "./screens/LandingPage"
 import Memotest from "./screens/Memotest"
 import Pokemon from "./screens/Pokemon"
@@ -13,9 +13,6 @@ function App() {
         <Route element={<Pokemon />} path="/pokemon" />
         <Route element={<WordsPerMinute />} path="/wpm" />
       </Routes>
-      {/* <Link to="/memotest">
-        <button style={{ cursor: "pointer", fontSize: "24px", padding: ".25rem" }} >Memotest</button>
-      </Link> */}
     </>
   )
 }
